@@ -348,7 +348,74 @@ export const Navbar = () => {
                 <svg className="w-5 h-5 text-[#8B96A5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
                 </svg>
-                <span className="font-medium">Categories</span>
+                <span className="font-medium">All Categories</span>
+              </Link>
+
+              <Link
+                href="/products?featured=hot"
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center gap-3 px-4 py-3 text-[#1C1C1C] hover:bg-gray-50 transition-colors duration-300"
+              >
+                <svg className="w-5 h-5 text-[#8B96A5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z" />
+                </svg>
+                <span className="font-medium">Hot Offers</span>
+              </Link>
+
+              <Link
+                href="/gift-boxes"
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center gap-3 px-4 py-3 text-[#1C1C1C] hover:bg-gray-50 transition-colors duration-300"
+              >
+                <svg className="w-5 h-5 text-[#8B96A5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" />
+                </svg>
+                <span className="font-medium">Gift Boxes</span>
+              </Link>
+
+              <Link
+                href="/request-quote"
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center gap-3 px-4 py-3 text-[#1C1C1C] hover:bg-gray-50 transition-colors duration-300"
+              >
+                <svg className="w-5 h-5 text-[#8B96A5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                <span className="font-medium">Request Quote</span>
+              </Link>
+
+              <Link
+                href="/menu-item"
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center gap-3 px-4 py-3 text-[#1C1C1C] hover:bg-gray-50 transition-colors duration-300"
+              >
+                <svg className="w-5 h-5 text-[#8B96A5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+                <span className="font-medium">Menu Item</span>
+              </Link>
+
+              <div className="border-t border-gray-200 my-2"></div>
+
+              {isAuthenticated && (
+                <Link
+                  href="/profile"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex items-center gap-3 px-4 py-3 text-[#1C1C1C] hover:bg-gray-50 transition-colors duration-300"
+                >
+                  <User className="w-5 h-5 text-[#8B96A5]" />
+                  <span className="font-medium">My Profile</span>
+                </Link>
+              )}
+
+              <Link
+                href="/orders"
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center gap-3 px-4 py-3 text-[#1C1C1C] hover:bg-gray-50 transition-colors duration-300"
+              >
+                <Package className="w-5 h-5 text-[#8B96A5]" />
+                <span className="font-medium">My Orders</span>
               </Link>
 
               <Link
@@ -363,12 +430,31 @@ export const Navbar = () => {
               </Link>
 
               <Link
-                href="/orders"
+                href="/contact"
                 onClick={() => setMobileMenuOpen(false)}
                 className="flex items-center gap-3 px-4 py-3 text-[#1C1C1C] hover:bg-gray-50 transition-colors duration-300"
               >
-                <Package className="w-5 h-5 text-[#8B96A5]" />
-                <span className="font-medium">My orders</span>
+                <MessageSquare className="w-5 h-5 text-[#8B96A5]" />
+                <span className="font-medium">Contact / Message</span>
+              </Link>
+
+              <div className="border-t border-gray-200 my-2"></div>
+
+              {/* Help Section */}
+              <div className="px-4 py-2">
+                <p className="text-xs font-semibold text-[#8B96A5] uppercase tracking-wider mb-2">Help & Support</p>
+              </div>
+
+              <Link
+                href="/help"
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center gap-3 px-4 py-3 text-[#1C1C1C] hover:bg-gray-50 transition-colors duration-300"
+              >
+                <svg className="w-5 h-5 text-[#8B96A5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2"/>
+                  <path d="M12 16v-4M12 8h.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                </svg>
+                <span className="font-medium">Help Center</span>
               </Link>
 
               <div className="border-t border-gray-200 my-2"></div>
@@ -377,17 +463,6 @@ export const Navbar = () => {
                 <span className="text-xl">🇺🇸</span>
                 <span className="font-medium text-[#8B96A5]">English | USD</span>
               </div>
-
-              <Link
-                href="/contact"
-                onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center gap-3 px-4 py-3 text-[#1C1C1C] hover:bg-gray-50 transition-colors duration-300"
-              >
-                <svg className="w-5 h-5 text-[#8B96A5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                </svg>
-                <span className="font-medium">Contact us</span>
-              </Link>
 
               <Link
                 href="/about"
@@ -408,7 +483,7 @@ export const Navbar = () => {
                 <svg className="w-5 h-5 text-[#8B96A5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
-                <span className="font-medium">User agreement</span>
+                <span className="font-medium">User Agreement</span>
               </Link>
 
               {isAuthenticated && (
