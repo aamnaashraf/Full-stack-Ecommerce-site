@@ -1,4 +1,15 @@
-from app.main import app
+from fastapi import FastAPI
+from mangum import Mangum
 
-# This is the handler for Vercel serverless functions
-handler = app
+app = FastAPI(title="E-Commerce API Test")
+
+@app.get("/")
+def root():
+    return {"message": "E-Commerce API", "status": "working"}
+
+@app.get("/health")
+def health():
+    return {"status": "healthy"}
+
+# Mangum handler for AWS Lambda/Vercel
+handler = Mangum(app)
