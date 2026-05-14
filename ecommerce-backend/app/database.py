@@ -16,8 +16,26 @@ SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 Base = declarative_base()
 
+# Track if tables have been created
+_tables_created = False
+
+def init_tables():
+    """Initialize database tables if not already created"""
+    global _tables_created
+    if not _tables_created:
+        try:
+            # Import all models to ensure they're registered with Base
+            from app.models import Product, Review, User, Order, OrderItem, ContactMessage, NewsletterSubscriber, QuoteRequest
+            Base.metadata.create_all(bind=engine)
+            _tables_created = True
+        except Exception as e:
+            print(f"Error creating tables: {e}")
+            raise
+
 def get_db():
     """Database dependency for FastAPI routes"""
+    # Ensure tables exist before yielding session
+    init_tables()
     db = SessionLocal()
     try:
         yield db
