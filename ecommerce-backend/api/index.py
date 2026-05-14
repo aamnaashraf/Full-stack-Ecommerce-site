@@ -43,6 +43,17 @@ def root():
         "status": "All routes loaded successfully!"
     }
 
+@app.get("/debug/init-tables")
+def debug_init_tables():
+    """Debug endpoint to manually initialize tables"""
+    try:
+        from app.database import engine, Base
+        from app.models import Product, Review, User, Order, OrderItem, ContactMessage, NewsletterSubscriber, QuoteRequest
+        Base.metadata.create_all(bind=engine)
+        return {"status": "success", "message": "Tables created successfully"}
+    except Exception as e:
+        return {"status": "error", "message": str(e), "type": type(e).__name__}
+
 @app.get("/health")
 def health():
     return {"status": "healthy", "environment": "production"}
