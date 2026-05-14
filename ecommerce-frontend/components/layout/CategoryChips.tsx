@@ -1,28 +1,24 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
-import { api } from '@/lib/api';
+
+// All available categories - hardcoded to always show even if no products exist yet
+const ALL_CATEGORIES = [
+  'Electronics',
+  'Clothing',
+  'Home & Garden',
+  'Sports & Outdoors',
+  'Beauty & Health',
+  'Toys & Games',
+  'Books & Media',
+  'Automotive',
+  'Machinery & Tools',
+  'Pet Supplies',
+];
 
 export const CategoryChips = () => {
   const [activeCategory, setActiveCategory] = useState('all');
-  const [categories, setCategories] = useState<string[]>([]);
-
-  useEffect(() => {
-    const fetchCategories = async () => {
-      try {
-        const products = await api.getProducts();
-        const uniqueCategories = Array.from(new Set<string>(products.map((p: any) => p.category)));
-        setCategories(uniqueCategories);
-      } catch (error) {
-        console.error('Failed to fetch categories:', error);
-        // Fallback to default categories if API fails
-        setCategories(['Electronics', 'Clothing', 'Home & Garden', 'Sports', 'Beauty']);
-      }
-    };
-
-    fetchCategories();
-  }, []);
 
   return (
     <div className="md:hidden bg-white border-b border-gray-200 sticky top-0 z-40 overflow-hidden">
@@ -39,7 +35,7 @@ export const CategoryChips = () => {
           >
             All
           </Link>
-          {categories.map((category) => (
+          {ALL_CATEGORIES.map((category) => (
             <Link
               key={category}
               href={`/products?category=${encodeURIComponent(category)}`}

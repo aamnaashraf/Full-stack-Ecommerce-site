@@ -37,15 +37,38 @@ function ProductsContent() {
         setProducts(transformedData);
         setFilteredProducts(transformedData);
 
-        const uniqueCategories = Array.from(new Set(transformedData.map((p: Product) => p.category))) as string[];
-        setCategories(uniqueCategories);
+        // Use hardcoded categories to always show all options
+        const allCategories = [
+          'Electronics',
+          'Clothing',
+          'Home & Garden',
+          'Sports & Outdoors',
+          'Beauty & Health',
+          'Toys & Games',
+          'Books & Media',
+          'Automotive',
+          'Machinery & Tools',
+          'Pet Supplies',
+        ];
+        setCategories(allCategories);
       } catch (error) {
         console.error('Failed to fetch products from API, using mock data:', error);
         // Fallback to mock data if API fails
         setProducts(mockProducts);
         setFilteredProducts(mockProducts);
-        const uniqueCategories = Array.from(new Set(mockProducts.map((p: Product) => p.category)));
-        setCategories(uniqueCategories);
+        const allCategories = [
+          'Electronics',
+          'Clothing',
+          'Home & Garden',
+          'Sports & Outdoors',
+          'Beauty & Health',
+          'Toys & Games',
+          'Books & Media',
+          'Automotive',
+          'Machinery & Tools',
+          'Pet Supplies',
+        ];
+        setCategories(allCategories);
       } finally {
         setLoading(false);
       }
@@ -61,7 +84,13 @@ function ProductsContent() {
     let filtered = products;
 
     if (category) {
-      filtered = filtered.filter((p) => p.category === category);
+      // Handle backward compatibility: "Sports" products should show under "Sports & Outdoors"
+      filtered = filtered.filter((p) => {
+        if (category === 'Sports & Outdoors') {
+          return p.category === 'Sports & Outdoors' || p.category === 'Sports';
+        }
+        return p.category === category;
+      });
       setSelectedCategory(category);
     }
 
