@@ -6,6 +6,18 @@ import os
 # Create app
 app = FastAPI(title="E-Commerce API", version="1.0.0")
 
+# Initialize database tables on startup
+@app.on_event("startup")
+async def startup_event():
+    """Create database tables if they don't exist"""
+    try:
+        from app.database import engine, Base
+        from app.models import Product, Review, User, Order, OrderItem, ContactMessage, NewsletterSubscriber, QuoteRequest
+        Base.metadata.create_all(bind=engine)
+        print("Database tables initialized successfully")
+    except Exception as e:
+        print(f"Error initializing database: {e}")
+
 # Add CORS - allow all origins
 app.add_middleware(
     CORSMiddleware,
