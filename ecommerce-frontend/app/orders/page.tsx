@@ -135,30 +135,30 @@ export default function OrdersPage() {
             {orders.map((order) => (
               <div
                 key={order.id}
-                className="bg-white rounded-[16px] border border-[#DEE2E7] p-6 hover:shadow-xl transition-all duration-300"
+                className="bg-white rounded-[16px] border border-[#DEE2E7] p-4 sm:p-6 hover:shadow-xl transition-all duration-300"
               >
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                <div className="flex flex-col gap-4">
                   <div className="flex-1">
-                    <div className="flex items-center gap-3 mb-2">
-                      <h3 className="text-lg font-bold text-[#1C1C1C]">
+                    <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-2">
+                      <h3 className="text-base sm:text-lg font-bold text-[#1C1C1C]">
                         Order #{order.id}
                       </h3>
-                      <span className={`px-3 py-1 rounded-full text-xs font-semibold ${getStatusColor(order.status)}`}>
+                      <span className={`px-2 sm:px-3 py-1 rounded-full text-xs font-semibold ${getStatusColor(order.status)}`}>
                         {order.status.charAt(0).toUpperCase() + order.status.slice(1)}
                       </span>
                     </div>
-                    <div className="flex flex-wrap gap-4 text-sm text-[#8B96A5]">
-                      <span>📦 {order.items_count} {order.items_count === 1 ? 'item' : 'items'}</span>
-                      <span>📅 {formatDate(order.created_at)}</span>
-                      <span className="font-semibold text-[#1C1C1C]">
+                    <div className="flex flex-wrap gap-2 sm:gap-4 text-xs sm:text-sm text-[#8B96A5]">
+                      <span className="break-all">📦 {order.items_count} {order.items_count === 1 ? 'item' : 'items'}</span>
+                      <span className="break-all">📅 {formatDate(order.created_at)}</span>
+                      <span className="font-semibold text-[#1C1C1C] break-all">
                         💰 ${order.total_amount.toFixed(2)}
                       </span>
                     </div>
                   </div>
-                  <div className="flex gap-3">
+                  <div className="flex gap-3 w-full sm:w-auto">
                     <Link
                       href={`/orders/${order.id}`}
-                      className="px-6 py-2.5 bg-[#0D6EFD] text-white rounded-[8px] font-semibold hover:bg-[#0052CC] hover:shadow-lg transition-all duration-300"
+                      className="flex-1 sm:flex-none px-4 sm:px-6 py-2.5 bg-[#0D6EFD] text-white rounded-[8px] font-semibold hover:bg-[#0052CC] hover:shadow-lg transition-all duration-300 text-center text-sm sm:text-base"
                     >
                       View Details
                     </Link>

@@ -44,7 +44,7 @@ export const Hero = () => {
           {/* CENTER - Banner Image */}
           <div className="flex-1 flex items-center justify-center py-3 px-3 md:py-5 md:px-2">
             <img
-              src="/images/image/banner.png"
+              src="/images/Image/banner.png"
               alt="Banner"
               className="w-full max-h-[200px] sm:max-h-[280px] md:max-h-[360px] object-cover rounded-lg"
             />

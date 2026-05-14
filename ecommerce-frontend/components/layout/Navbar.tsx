@@ -44,7 +44,7 @@ export const Navbar = () => {
                 {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
               </button>
               <Link href="/" className="flex items-center">
-                <Image src="/images/brand/logo-colored.png" alt="Brand Logo" width={56} height={56} className="object-contain" />
+                <Image src="/images/Brand/logo-colored.png" alt="Brand Logo" width={56} height={56} className="object-contain" />
               </Link>
             </div>
 
@@ -88,7 +88,7 @@ export const Navbar = () => {
           <div className="max-w-[1440px] mx-auto h-full relative">
             {/* Logo - 9.03% from left */}
             <Link href="/" className="absolute left-[9.03%] top-1/2 -translate-y-1/2 hover:opacity-80 transition-opacity duration-300">
-              <Image src="/images/brand/logo-colored.png" alt="Brand Logo" width={90} height={90} className="object-contain" />
+              <Image src="/images/Brand/logo-colored.png" alt="Brand Logo" width={90} height={90} className="object-contain" />
             </Link>
 
             {/* Search Form - 22.64% to 68.82% */}
