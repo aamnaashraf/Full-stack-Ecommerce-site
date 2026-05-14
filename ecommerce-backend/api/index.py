@@ -1,7 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from mangum import Mangum
-from sqlalchemy import text
 import os
 
 # Create app
@@ -16,16 +15,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-# Initialize database tables on first request
-@app.on_event("startup")
-async def startup_event():
-    """Create database tables if they don't exist"""
-    try:
-        from app.database import engine, Base
-        Base.metadata.create_all(bind=engine)
-    except Exception as e:
-        print(f"Database initialization warning: {e}")
 
 # Include all routes
 from app.routes import products_router
@@ -58,5 +47,5 @@ def root():
 def health():
     return {"status": "healthy"}
 
-# Mangum handler with lifespan support
-handler = Mangum(app, lifespan="auto")
+# Mangum handler - no lifespan events for serverless
+handler = Mangum(app, lifespan="off")
