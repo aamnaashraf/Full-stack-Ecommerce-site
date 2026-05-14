@@ -4,8 +4,8 @@ from mangum import Mangum
 from sqlalchemy import text
 import os
 
-# Create a simple app first to test
-app = FastAPI(title="E-Commerce API")
+# Create app
+app = FastAPI(title="E-Commerce API", version="1.0.0")
 
 # Add CORS
 cors_origins = os.getenv("CORS_ORIGINS", "*").split(",")
@@ -17,49 +17,46 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Initialize database tables on first request
+@app.on_event("startup")
+async def startup_event():
+    """Create database tables if they don't exist"""
+    try:
+        from app.database import engine, Base
+        Base.metadata.create_all(bind=engine)
+    except Exception as e:
+        print(f"Database initialization warning: {e}")
+
+# Include all routes
+from app.routes import products_router
+from app.routes.auth import router as auth_router
+from app.routes.users import router as users_router
+from app.routes.reviews import router as reviews_router
+from app.routes.contact import router as contact_router
+from app.routes.orders import router as orders_router
+from app.routes.newsletter import router as newsletter_router
+from app.routes.quotes import router as quotes_router
+
+app.include_router(products_router)
+app.include_router(auth_router)
+app.include_router(users_router)
+app.include_router(reviews_router)
+app.include_router(contact_router)
+app.include_router(orders_router)
+app.include_router(newsletter_router)
+app.include_router(quotes_router)
+
 @app.get("/")
 def root():
     return {
         "message": "E-Commerce API",
         "version": "1.0.0",
-        "status": "working"
+        "docs": "/docs"
     }
 
 @app.get("/health")
 def health():
     return {"status": "healthy"}
 
-@app.get("/test-db")
-def test_db():
-    try:
-        from app.database import engine
-        with engine.connect() as conn:
-            result = conn.execute(text("SELECT 1"))
-            return {"database": "connected", "test": "passed"}
-    except Exception as e:
-        return {"database": "error", "message": str(e)}
-
-# Now try to import and include all routes
-try:
-    from app.routes import products_router
-    from app.routes.auth import router as auth_router
-    from app.routes.users import router as users_router
-    from app.routes.reviews import router as reviews_router
-    from app.routes.contact import router as contact_router
-    from app.routes.orders import router as orders_router
-    from app.routes.newsletter import router as newsletter_router
-    from app.routes.quotes import router as quotes_router
-
-    app.include_router(products_router)
-    app.include_router(auth_router)
-    app.include_router(users_router)
-    app.include_router(reviews_router)
-    app.include_router(contact_router)
-    app.include_router(orders_router)
-    app.include_router(newsletter_router)
-    app.include_router(quotes_router)
-except Exception as e:
-    print(f"Warning: Could not load all routes: {e}")
-
-# Mangum handler
-handler = Mangum(app, lifespan="off")
+# Mangum handler with lifespan support
+handler = Mangum(app, lifespan="auto")
