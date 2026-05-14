@@ -48,6 +48,34 @@ export default function MenuItemPage() {
       icon: '🎮',
       description: 'Fun for all ages',
       subcategories: ['Action Figures', 'Board Games', 'Video Games', 'Educational', 'Outdoor Toys']
+    },
+    {
+      id: 'books',
+      name: 'Books & Media',
+      icon: '📚',
+      description: 'Reading and entertainment',
+      subcategories: ['Fiction', 'Non-Fiction', 'Educational', 'Magazines', 'E-Books']
+    },
+    {
+      id: 'automotive',
+      name: 'Automotive',
+      icon: '🚗',
+      description: 'Car parts and accessories',
+      subcategories: ['Car Accessories', 'Parts', 'Tools', 'Maintenance', 'Electronics']
+    },
+    {
+      id: 'machinery',
+      name: 'Machinery & Tools',
+      icon: '🔧',
+      description: 'Professional tools and equipment',
+      subcategories: ['Power Tools', 'Hand Tools', 'Industrial', 'Safety Equipment', 'Accessories']
+    },
+    {
+      id: 'pets',
+      name: 'Pet Supplies',
+      icon: '🐾',
+      description: 'Everything for your pets',
+      subcategories: ['Pet Food', 'Toys', 'Accessories', 'Health Care', 'Grooming']
     }
   ];
 

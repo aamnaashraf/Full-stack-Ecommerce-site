@@ -109,6 +109,13 @@ export const Navbar = () => {
                   <option>Electronics</option>
                   <option>Clothing</option>
                   <option>Home & Garden</option>
+                  <option>Sports & Outdoors</option>
+                  <option>Beauty & Health</option>
+                  <option>Toys & Games</option>
+                  <option>Books & Media</option>
+                  <option>Automotive</option>
+                  <option>Machinery & Tools</option>
+                  <option>Pet Supplies</option>
                 </select>
 
                 {/* Search Button */}

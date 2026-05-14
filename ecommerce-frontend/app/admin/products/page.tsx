@@ -327,7 +327,13 @@ export default function AdminProductsPage() {
                         <option value="Electronics">Electronics</option>
                         <option value="Clothing">Clothing</option>
                         <option value="Home & Garden">Home & Garden</option>
-                        <option value="Sports">Sports</option>
+                        <option value="Sports & Outdoors">Sports & Outdoors</option>
+                        <option value="Beauty & Health">Beauty & Health</option>
+                        <option value="Toys & Games">Toys & Games</option>
+                        <option value="Books & Media">Books & Media</option>
+                        <option value="Automotive">Automotive</option>
+                        <option value="Machinery & Tools">Machinery & Tools</option>
+                        <option value="Pet Supplies">Pet Supplies</option>
                       </select>
                     </div>
 

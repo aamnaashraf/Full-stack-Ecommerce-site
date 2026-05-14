@@ -7,12 +7,13 @@ const categories = [
   'Electronics',
   'Clothing',
   'Home & Garden',
-  'Sports',
-  'Beauty',
-  'Toys',
-  'Books',
+  'Sports & Outdoors',
+  'Beauty & Health',
+  'Toys & Games',
+  'Books & Media',
   'Automotive',
-  'More category',
+  'Machinery & Tools',
+  'Pet Supplies',
 ];
 
 export const Hero = () => {
