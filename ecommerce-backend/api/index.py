@@ -1,15 +1,5 @@
-from fastapi import FastAPI
 from mangum import Mangum
+from app.main import app
 
-app = FastAPI(title="E-Commerce API Test")
-
-@app.get("/")
-def root():
-    return {"message": "E-Commerce API", "status": "working"}
-
-@app.get("/health")
-def health():
-    return {"status": "healthy"}
-
-# Mangum handler for AWS Lambda/Vercel
-handler = Mangum(app)
+# Mangum handler for Vercel serverless
+handler = Mangum(app, lifespan="off")
