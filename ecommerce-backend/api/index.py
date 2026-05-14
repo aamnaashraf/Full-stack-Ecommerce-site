@@ -16,36 +16,42 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Include all routes
-from app.routes import products_router
-from app.routes.auth import router as auth_router
-from app.routes.users import router as users_router
-from app.routes.reviews import router as reviews_router
-from app.routes.contact import router as contact_router
-from app.routes.orders import router as orders_router
-from app.routes.newsletter import router as newsletter_router
-from app.routes.quotes import router as quotes_router
-
-app.include_router(products_router)
-app.include_router(auth_router)
-app.include_router(users_router)
-app.include_router(reviews_router)
-app.include_router(contact_router)
-app.include_router(orders_router)
-app.include_router(newsletter_router)
-app.include_router(quotes_router)
-
 @app.get("/")
 def root():
     return {
         "message": "E-Commerce API",
         "version": "1.0.0",
-        "docs": "/docs"
+        "docs": "/docs",
+        "status": "Backend is live on Vercel!"
     }
 
 @app.get("/health")
 def health():
-    return {"status": "healthy"}
+    return {"status": "healthy", "environment": "production"}
 
-# Mangum handler - no lifespan events for serverless
+@app.get("/api/products")
+def get_products():
+    """Temporary endpoint - returns mock data until database is configured"""
+    return [
+        {
+            "_id": "1",
+            "name": "Sample Product 1",
+            "price": 29.99,
+            "image": "/images/Image/tech/1.png",
+            "category": "Electronics",
+            "description": "Sample product description",
+            "stock": 10
+        },
+        {
+            "_id": "2",
+            "name": "Sample Product 2",
+            "price": 49.99,
+            "image": "/images/Image/tech/2.jpg",
+            "category": "Electronics",
+            "description": "Sample product description",
+            "stock": 15
+        }
+    ]
+
+# Mangum handler
 handler = Mangum(app, lifespan="off")
