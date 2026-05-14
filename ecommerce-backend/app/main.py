@@ -9,7 +9,6 @@ from app.routes.contact import router as contact_router
 from app.routes.orders import router as orders_router
 from app.routes.newsletter import router as newsletter_router
 from app.routes.quotes import router as quotes_router
-from app.database import engine, Base
 
 app = FastAPI(
     title="E-Commerce API",
@@ -46,7 +45,3 @@ def root():
 def health_check():
     return {"status": "healthy"}
 
-@app.on_event("startup")
-def startup():
-    """Create database tables on startup"""
-    Base.metadata.create_all(bind=engine)
