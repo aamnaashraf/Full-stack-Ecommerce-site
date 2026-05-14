@@ -65,12 +65,12 @@ export const api = {
   },
 
   signup: async (name: string, email: string, password: string) => {
-    const response = await fetch(`${API_BASE_URL}/api/auth/register`, {
+    const response = await fetch(`${API_BASE_URL}/api/auth/signup`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ name, email, password }),
+      body: JSON.stringify({ full_name: name, email, password }),
     });
     if (!response.ok) throw new Error('Signup failed');
     return response.json();

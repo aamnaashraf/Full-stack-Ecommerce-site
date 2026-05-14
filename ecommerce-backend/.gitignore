@@ -36,3 +36,5 @@ wheels/
 
 # Alembic
 alembic/versions/*.pyc
+
+.vercel
