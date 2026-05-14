@@ -16,7 +16,7 @@ export default function MenuItemPage() {
     },
     {
       id: 'clothing',
-      name: 'Clothing & Fashion',
+      name: 'Clothing',
       icon: '👕',
       description: 'Trendy apparel and accessories',
       subcategories: ['Men\'s Wear', 'Women\'s Wear', 'Kids Fashion', 'Shoes', 'Accessories']
