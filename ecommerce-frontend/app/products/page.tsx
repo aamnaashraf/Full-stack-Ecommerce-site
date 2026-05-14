@@ -118,7 +118,14 @@ function ProductsContent() {
     setSelectedCategory(category);
     setCurrentPage(1); // Reset to page 1 when category changes
     if (category) {
-      setFilteredProducts(products.filter((p) => p.category === category));
+      // Handle backward compatibility: "Sports" products should show under "Sports & Outdoors"
+      const filtered = products.filter((p) => {
+        if (category === 'Sports & Outdoors') {
+          return p.category === 'Sports & Outdoors' || p.category === 'Sports';
+        }
+        return p.category === category;
+      });
+      setFilteredProducts(filtered);
     } else {
       setFilteredProducts(products);
     }
