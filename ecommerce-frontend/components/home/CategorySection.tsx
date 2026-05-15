@@ -84,12 +84,12 @@ export const CategorySection = ({ title, subtitle }: CategorySectionProps) => {
           <div className="hidden md:flex gap-3">
             {/* LEFT - Background Image with Text Overlay */}
             <div
-              className="w-[240px] flex-shrink-0 rounded-lg overflow-hidden relative group cursor-pointer"
+              className="w-[280px] flex-shrink-0 rounded-lg overflow-hidden relative group cursor-pointer"
               style={{
                 backgroundImage: `url('${bgImage}')`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
-                minHeight: '257px'
+                height: '257px'
               }}
             >
               {/* Text Content - Positioned at Top */}
