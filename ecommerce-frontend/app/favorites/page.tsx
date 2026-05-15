@@ -5,20 +5,17 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useFavoritesContext } from '@/context/FavoritesContext';
 import { useCartContext } from '@/context/CartContext';
-import { useAuth } from '@/contexts/AuthContext';
 import { useRouter } from 'next/navigation';
-
-// Force dynamic rendering since this page uses authentication
-export const dynamic = 'force-dynamic';
 
 export default function FavoritesPage() {
   const { favorites, removeFromFavorites } = useFavoritesContext();
   const { addToCart } = useCartContext();
-  const { isAuthenticated } = useAuth();
   const router = useRouter();
 
   const handleAddToCart = (product: any) => {
-    if (!isAuthenticated) {
+    // Check if user is authenticated by checking localStorage token
+    const token = typeof window !== 'undefined' ? localStorage.getItem('auth_token') : null;
+    if (!token) {
       // Redirect to login page with return URL
       router.push('/login?redirect=/favorites');
       return;
