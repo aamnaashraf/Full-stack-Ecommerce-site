@@ -8,6 +8,9 @@ import { useCartContext } from '@/context/CartContext';
 import { useAuth } from '@/contexts/AuthContext';
 import { useRouter } from 'next/navigation';
 
+// Force dynamic rendering since this page uses authentication
+export const dynamic = 'force-dynamic';
+
 export default function FavoritesPage() {
   const { favorites, removeFromFavorites } = useFavoritesContext();
   const { addToCart } = useCartContext();
