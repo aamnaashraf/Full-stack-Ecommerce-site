@@ -15,7 +15,7 @@ export const CategorySection = ({ title, subtitle }: CategorySectionProps) => {
   // Determine category and image based on title
   const isHomeSection = title.includes('Home');
   const targetCategory = isHomeSection ? 'Home & Garden' : 'Electronics';
-  const leftImage = isHomeSection ? '/images/image/left-aside.png' : '/images/image/left-side.png';
+  const bgImage = isHomeSection ? '/image 92.png' : '/image 98.png';
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -80,15 +80,33 @@ export const CategorySection = ({ title, subtitle }: CategorySectionProps) => {
             </div>
           </div>
 
-          {/* Desktop Layout - Original with left image + grid */}
+          {/* Desktop Layout - Left image with text overlay + grid */}
           <div className="hidden md:flex gap-3">
-            {/* LEFT - Image (fully visible, centered) */}
-            <div className="w-[240px] flex-shrink-0 self-stretch flex items-center justify-center rounded-lg overflow-hidden group cursor-pointer">
-              <img
-                src={leftImage}
-                alt={title}
-                className="w-full h-full object-contain scale-105 group-hover:scale-110 group-hover:shadow-2xl transition-all duration-500 ease-in-out"
-              />
+            {/* LEFT - Background Image with Text Overlay */}
+            <div
+              className="w-[240px] flex-shrink-0 rounded-lg overflow-hidden relative group cursor-pointer"
+              style={{
+                backgroundImage: `url('${bgImage}')`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                minHeight: '257px'
+              }}
+            >
+              {/* Dark overlay for better text readability */}
+              <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-all duration-300"></div>
+
+              {/* Text Content */}
+              <div className="relative z-10 h-full flex flex-col justify-end p-6">
+                <h3 className="text-white text-xl font-bold mb-3 leading-tight">
+                  {title}
+                </h3>
+                <Link
+                  href="/products"
+                  className="inline-block bg-white text-gray-900 px-4 py-2 rounded-md font-semibold text-sm hover:bg-gray-100 hover:shadow-lg hover:scale-105 transition-all duration-300 text-center"
+                >
+                  {subtitle}
+                </Link>
+              </div>
             </div>
 
             {/* RIGHT - 8 Products in 2 rows (4x2 grid) */}
