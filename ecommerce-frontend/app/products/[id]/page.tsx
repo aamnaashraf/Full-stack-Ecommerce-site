@@ -118,6 +118,17 @@ export default function ProductDetailPage() {
 
           {/* 5. Similar Products Carousel */}
           <RecommendedProducts products={recommendedProducts} />
+
+          {/* 6. Super Discount Banner - Mobile */}
+          <div className="bg-gradient-to-r from-[#2C7CF1] to-[#00D4FF] rounded-[6px] p-4 sm:p-6 flex flex-col sm:flex-row items-center sm:justify-between gap-4 hover:shadow-xl transition-all duration-300 animate-fadeInUp">
+            <div className="text-white text-center sm:text-left">
+              <h3 className="text-lg sm:text-xl font-bold mb-1 sm:mb-2">Super discount on more than 100 USD</h3>
+              <p className="text-white/90 text-sm sm:text-base">Have you ever finally just write dummy info</p>
+            </div>
+            <button className="bg-[#FF9017] hover:bg-[#FF7A00] hover:scale-105 text-white px-5 py-2.5 sm:px-6 sm:py-3 rounded-[6px] font-semibold transition-all duration-300 shadow-lg whitespace-nowrap">
+              Shop now
+            </button>
+          </div>
         </div>
 
         {/* Desktop Layout */}
