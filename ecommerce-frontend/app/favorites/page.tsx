@@ -5,12 +5,21 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useFavoritesContext } from '@/context/FavoritesContext';
 import { useCartContext } from '@/context/CartContext';
+import { useAuth } from '@/contexts/AuthContext';
+import { useRouter } from 'next/navigation';
 
 export default function FavoritesPage() {
   const { favorites, removeFromFavorites } = useFavoritesContext();
   const { addToCart } = useCartContext();
+  const { isAuthenticated } = useAuth();
+  const router = useRouter();
 
   const handleAddToCart = (product: any) => {
+    if (!isAuthenticated) {
+      // Redirect to login page with return URL
+      router.push('/login?redirect=/favorites');
+      return;
+    }
     addToCart(product, 1);
   };
 

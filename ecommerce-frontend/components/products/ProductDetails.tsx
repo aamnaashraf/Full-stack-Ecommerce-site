@@ -6,6 +6,8 @@ import { formatPrice } from '@/lib/utils';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
 import { useState } from 'react';
+import { useAuth } from '@/contexts/AuthContext';
+import { useRouter } from 'next/navigation';
 
 interface ProductDetailsProps {
   product: Product;
@@ -14,8 +16,15 @@ interface ProductDetailsProps {
 export const ProductDetails = ({ product }: ProductDetailsProps) => {
   const { addToCart } = useCart();
   const [quantity, setQuantity] = useState(1);
+  const { isAuthenticated } = useAuth();
+  const router = useRouter();
 
   const handleAddToCart = () => {
+    if (!isAuthenticated) {
+      // Redirect to login page with return URL
+      router.push(`/login?redirect=/products/${product._id || product.id}`);
+      return;
+    }
     addToCart(product, quantity);
   };
 
