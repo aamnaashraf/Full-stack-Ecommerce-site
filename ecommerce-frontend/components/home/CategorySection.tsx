@@ -88,7 +88,8 @@ export const CategorySection = ({ title, subtitle }: CategorySectionProps) => {
               style={{
                 backgroundImage: `url('${bgImage}')`,
                 backgroundSize: 'cover',
-                backgroundPosition: 'center',
+                backgroundPosition: 'center center',
+                backgroundRepeat: 'no-repeat',
                 height: '257px'
               }}
             >
