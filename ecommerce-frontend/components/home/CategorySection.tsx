@@ -92,17 +92,14 @@ export const CategorySection = ({ title, subtitle }: CategorySectionProps) => {
                 minHeight: '257px'
               }}
             >
-              {/* Dark overlay for better text readability */}
-              <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-all duration-300"></div>
-
-              {/* Text Content */}
-              <div className="relative z-10 h-full flex flex-col justify-end p-6">
-                <h3 className="text-white text-xl font-bold mb-3 leading-tight">
+              {/* Text Content - Positioned at Top */}
+              <div className="relative z-10 h-full flex flex-col justify-start p-6">
+                <h3 className="text-white text-xl font-bold mb-3 leading-tight drop-shadow-lg" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.7)' }}>
                   {title}
                 </h3>
                 <Link
                   href="/products"
-                  className="inline-block bg-white text-gray-900 px-4 py-2 rounded-md font-semibold text-sm hover:bg-gray-100 hover:shadow-lg hover:scale-105 transition-all duration-300 text-center"
+                  className="inline-block bg-white text-gray-900 px-4 py-2 rounded-md font-semibold text-sm hover:bg-gray-100 hover:shadow-lg hover:scale-105 transition-all duration-300 text-center w-fit"
                 >
                   {subtitle}
                 </Link>
