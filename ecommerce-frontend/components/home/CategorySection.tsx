@@ -81,7 +81,7 @@ export const CategorySection = ({ title, subtitle }: CategorySectionProps) => {
           </div>
 
           {/* Desktop Layout - Left image with text overlay + grid */}
-          <div className="hidden md:flex gap-3">
+          <div className="hidden md:flex gap-3 h-[257px]">
             {/* LEFT - Background Image with Text Overlay */}
             <div
               className="w-[280px] flex-shrink-0 rounded-lg overflow-hidden relative group cursor-pointer"
