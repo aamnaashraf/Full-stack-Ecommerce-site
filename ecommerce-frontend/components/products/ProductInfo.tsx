@@ -4,7 +4,6 @@ import { Product } from '@/types/product';
 import { formatPrice } from '@/lib/utils';
 import { useState } from 'react';
 import { useCartContext } from '@/context/CartContext';
-import { useAuth } from '@/contexts/AuthContext';
 import { useRouter } from 'next/navigation';
 
 interface ProductInfoProps {
@@ -16,11 +15,12 @@ export const ProductInfo = ({ product }: ProductInfoProps) => {
   const [quantity, setQuantity] = useState(1);
   const [addedToCart, setAddedToCart] = useState(false);
   const { addToCart } = useCartContext();
-  const { isAuthenticated } = useAuth();
   const router = useRouter();
 
   const handleAddToCart = () => {
-    if (!isAuthenticated) {
+    // Check if user is authenticated by checking localStorage token
+    const token = typeof window !== 'undefined' ? localStorage.getItem('auth_token') : null;
+    if (!token) {
       // Redirect to login page with return URL
       router.push(`/login?redirect=/products/${product._id || product.id}`);
       return;
