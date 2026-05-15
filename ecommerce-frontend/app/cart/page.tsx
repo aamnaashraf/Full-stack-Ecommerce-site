@@ -363,19 +363,15 @@ export default function CartPage() {
               </div>
             )}
 
-            {/* Blue Promo Banner */}
-            <div className="mt-4 sm:mt-6 bg-gradient-to-r from-blue-500 to-blue-700 rounded-lg p-4 sm:p-6 flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-4 hover:shadow-xl hover:scale-[1.02] transition-all duration-300 animate-fadeInUp">
-              <div>
-                <h3 className="text-white font-semibold text-base sm:text-lg">
-                  Super discount on more than 100 USD
-                </h3>
-                <p className="text-blue-100 text-xs sm:text-sm">
-                  Have you ever finally just write dummy info
-                </p>
+            {/* Super Discount Banner */}
+            <div className="mt-4 sm:mt-6 bg-gradient-to-r from-[#2C7CF1] to-[#00D4FF] rounded-[6px] p-4 sm:p-6 flex flex-col sm:flex-row items-center sm:justify-between gap-4 hover:shadow-xl transition-all duration-300 animate-fadeInUp">
+              <div className="text-white text-center sm:text-left">
+                <h3 className="text-lg sm:text-xl font-bold mb-1 sm:mb-2">Super discount on more than 100 USD</h3>
+                <p className="text-white/90 text-sm sm:text-base">Have you ever finally just write dummy info</p>
               </div>
               <Link
                 href="/products"
-                className="w-full sm:w-auto bg-orange-500 text-white px-4 py-2 rounded-md hover:bg-orange-600 hover:shadow-lg hover:scale-105 whitespace-nowrap text-sm sm:text-base transition-all duration-300"
+                className="bg-[#FF9017] hover:bg-[#FF7A00] hover:scale-105 text-white px-5 py-2.5 sm:px-6 sm:py-3 rounded-[6px] font-semibold transition-all duration-300 shadow-lg whitespace-nowrap"
               >
                 Shop now
               </Link>
