@@ -3,19 +3,19 @@
 const services = [
   {
     title: 'Source from Industry Hubs',
-    image: '/images/Image/interior/1.jpg',
+    image: '/Mask group (1).png',
   },
   {
     title: 'Customize Your Products',
-    image: '/images/Image/interior/2.jpg',
+    image: '/Mask group (2).png',
   },
   {
     title: 'Fast, reliable shipping by ocean or air',
-    image: '/images/Image/interior/3.jpg',
+    image: '/Mask group (3).png',
   },
   {
     title: 'Product monitoring and inspection',
-    image: '/images/Image/interior/4.jpg',
+    image: '/Mask group (4).png',
   },
 ];
 
